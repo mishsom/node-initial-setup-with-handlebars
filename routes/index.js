@@ -10,10 +10,20 @@ hbs.registerHelper('makeTextLoud', (text) =>{
     return typeof(text) === "string" ? text.toUpperCase() : text;
 })
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Express',
       welcomeMessage: 'hello there'
   });
 });
-
+var connectDataBase = (data, data2) => {
+    console.log("saving data to database")
+};
+router.get('/dummyApiForTest', (req, res) => {
+    connectDataBase("data", "apple");
+    res.send({
+        name: 'Soumitra Mishra',
+        age: '28',
+        likes: ['flute', 'guitar', 'coding']
+    })
+});
 module.exports = router;
